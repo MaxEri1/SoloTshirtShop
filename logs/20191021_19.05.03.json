@@ -1,0 +1,23 @@
+[
+  {
+    "name": "01-delete-existing-tshirts",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "delete"
+    },
+    "response": {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 0,
+      "serverStatus": 34,
+      "warningCount": 0,
+      "message": "",
+      "protocol41": true,
+      "changedRows": 0
+    },
+    "tests": [
+      "expect(response.warningCount).to.equal(0);"
+    ],
+    "status": "passed"
+  }
+]

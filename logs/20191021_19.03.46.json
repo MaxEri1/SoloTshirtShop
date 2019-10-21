@@ -1,0 +1,35 @@
+[
+  {
+    "name": "01-create-tshirt",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "post",
+      "body": [
+        {
+          "Id": "",
+          "Size": "Large",
+          "Color": "Red",
+          "Model": "Short sleeves",
+          "Material": "Cotton",
+          "Print": "Cross",
+          "Price": "150",
+          "id": 0
+        }
+      ]
+    },
+    "response": {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 0,
+      "serverStatus": 2,
+      "warningCount": 1,
+      "message": "",
+      "protocol41": true,
+      "changedRows": 0
+    },
+    "tests": [
+      "response.affectedRows.should.equal(1)"
+    ],
+    "status": "passed"
+  }
+]

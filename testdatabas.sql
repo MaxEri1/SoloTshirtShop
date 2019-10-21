@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2019 at 06:33 PM
+-- Generation Time: Oct 21, 2019 at 07:00 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tshirt` (
+  `Id` int(50) NOT NULL,
   `Size` varchar(50) NOT NULL,
   `Color` varchar(50) NOT NULL,
   `Model` varchar(50) NOT NULL,
