@@ -1,10 +1,10 @@
 [
   {
-    "Storlek": "Large",
-    "Färg": "Röd",
-    "Model": "Kort ärmad",
-    "Material": "Ull",
-    "Tryck": "Kors",
-    "Pris": "150"
+    "Size": "Large",
+    "Color": "Red",
+    "Model": "Short sleeves",
+    "Material": "Cotton",
+    "Print": "Cross",
+    "Price": "150"
   }
 ]
