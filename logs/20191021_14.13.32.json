@@ -1,0 +1,89 @@
+[
+  {
+    "name": "01-delete-all-tshirt-mods",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "delete"
+    },
+    "response": {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 0,
+      "serverStatus": 34,
+      "warningCount": 0,
+      "message": "",
+      "protocol41": true,
+      "changedRows": 0
+    },
+    "tests": [
+      "expect(response.warningCount).to.equal(0)"
+    ],
+    "status": "passed"
+  },
+  {
+    "name": "02-check-no-tshirts",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "get"
+    },
+    "response": [],
+    "tests": [
+      "assert.deepEqual(response, [])"
+    ],
+    "status": "passed"
+  },
+  {
+    "name": "03-create-tshirt",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "post",
+      "body": {
+        "Storlek": "Large",
+        "Färg": "Röd",
+        "Model": "Kort ärmad",
+        "Material": "Ull",
+        "Tryck": "Kors",
+        "Pris": "150"
+      }
+    },
+    "response": {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 0,
+      "serverStatus": 2,
+      "warningCount": 0,
+      "message": "",
+      "protocol41": true,
+      "changedRows": 0
+    },
+    "tests": [
+      "response.affectedRows.should.equal(1)",
+      "*store.mockTshirt[i].id = response.insertId"
+    ],
+    "status": "failed",
+    "error": "TypeError: Cannot read property '0' of undefined"
+  },
+  {
+    "name": "04-check-all-tshirts-inserted",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "get"
+    },
+    "response": [
+      {
+        "Storlek": "Large",
+        "Färg": "Röd",
+        "Model": "Kort ärmad",
+        "Material": "Ull",
+        "Tryck": "Kors",
+        "Pris": 150
+      }
+    ],
+    "tests": [
+      "*assert.equal(response.length, store.mockTshirt.length)",
+      "assert.deepEqual(response, store.mockTshirt)"
+    ],
+    "status": "failed",
+    "error": "TypeError: Cannot read property 'length' of undefined"
+  }
+]
