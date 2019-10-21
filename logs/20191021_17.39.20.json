@@ -1,0 +1,106 @@
+[
+  {
+    "name": "01-check-no-tshirts",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "get"
+    },
+    "response": [
+      {
+        "Size": "Large",
+        "Color": "Red",
+        "Model": "Short sleeves",
+        "Material": "Cotton",
+        "Print": "Cross",
+        "Price": 150
+      }
+    ],
+    "tests": [
+      "*assert.deepEqual(response, [])"
+    ],
+    "status": "failed",
+    "error": "AssertionError: expected [ Array(1) ] to deeply equal []"
+  },
+  {
+    "name": "02-create-tshirt",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "post",
+      "body": {
+        "Size": "Large",
+        "Color": "Red",
+        "Model": "Short sleeves",
+        "Material": "Cotton",
+        "Print": "Cross",
+        "Price": "150",
+        "id": 0
+      }
+    },
+    "response": {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 0,
+      "serverStatus": 2,
+      "warningCount": 0,
+      "message": "",
+      "protocol41": true,
+      "changedRows": 0
+    },
+    "tests": [
+      "response.affectedRows.should.equal(1)"
+    ],
+    "status": "passed"
+  },
+  {
+    "name": "03-check-all-tshirts-inserted",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "get"
+    },
+    "response": [
+      {
+        "Size": "Large",
+        "Color": "Red",
+        "Model": "Short sleeves",
+        "Material": "Cotton",
+        "Print": "Cross",
+        "Price": 150
+      },
+      {
+        "Size": "Large",
+        "Color": "Red",
+        "Model": "Short sleeves",
+        "Material": "Cotton",
+        "Print": "Cross",
+        "Price": 150
+      }
+    ],
+    "tests": [
+      "*assert.equal(response.length, store.mockTshirt.length)",
+      "assert.deepEqual(response, store.mockTshirt)"
+    ],
+    "status": "failed",
+    "error": "AssertionError: expected 2 to equal 1"
+  },
+  {
+    "name": "04-delete-all-tshirt-mods",
+    "request": {
+      "uri": "http://localhost:3000/rest/tshirt",
+      "method": "delete"
+    },
+    "response": {
+      "fieldCount": 0,
+      "affectedRows": 2,
+      "insertId": 0,
+      "serverStatus": 34,
+      "warningCount": 0,
+      "message": "",
+      "protocol41": true,
+      "changedRows": 0
+    },
+    "tests": [
+      "expect(response.warningCount).to.equal(0)"
+    ],
+    "status": "passed"
+  }
+]
